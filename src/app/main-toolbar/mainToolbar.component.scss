@@ -1,0 +1,35 @@
+@import '../shared/common-style';
+
+mat-toolbar {
+  background-color: white;
+  height: 50px;
+  box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.16);
+  position: relative;
+  z-index: 10;
+}
+
+.mat-menu-item {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.menu-toggle {
+  margin-left: -8px;
+}
+
+.store-name {
+  font-weight: 400;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+.user {
+  mat-icon {
+    margin-right: 4px;
+  }
+}

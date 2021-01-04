@@ -1,0 +1,78 @@
+<section class="table-filter-container">
+  <form [formGroup]="filterForm" fxLayout fxFlex>
+    <div class="filters">
+      <!-- <mat-form-field class="search" appearance="outline" floatLabel="always">
+        <mat-label>상품명, 재고 관리코드, 바코드 검색</mat-label>
+        <mat-icon matPrefix svgIcon="searchIcon"></mat-icon>
+        <input matInput formControlName="search" #searchInput>
+        <button mat-button type="button" *ngIf="filterForm.value.search" matSuffix mat-icon-button aria-label="Clear"
+                (click)="removeSearchText()">
+          <mat-icon svgIcon="closeIcon"></mat-icon>
+        </button>
+      </mat-form-field> -->
+
+      <app-period-select [filterPeriod]="filterPeriod" (periodChange)="periodChange($event)">
+      </app-period-select>
+
+      <mat-form-field appearance="outline">
+        <mat-label>판매상태</mat-label>
+        <mat-select formControlName="status" name="categoryId">
+          <mat-option value="">전체</mat-option>
+          <mat-option [value]="salesStatus.Completed">판매완료</mat-option>
+          <mat-option [value]="salesStatus.Hold">판매보류</mat-option>
+          <mat-option [value]="salesStatus.ReturnCompleted">환불완료</mat-option>
+          <mat-option [value]="salesStatus.ReturnHold">환불보류</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <button mat-button [disabled]="isFilterEmpty()" (click)="clearFilter()">필터제거</button>
+
+
+    </div>
+
+    <div class="filters">
+      <mat-form-field class="search" appearance="outline" floatLabel="always">
+        <mat-label>직원명</mat-label>
+        <mat-icon matPrefix svgIcon="searchIcon"></mat-icon>
+        <input matInput formControlName="search" #searchInput>
+        <button mat-button type="button" *ngIf="filterForm.value.search" matSuffix mat-icon-button
+                (click)="removeSearchText()">
+          <mat-icon svgIcon="closeIcon"></mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="search" appearance="outline" floatLabel="always">
+        <mat-label>고객명</mat-label>
+        <mat-icon matPrefix svgIcon="searchIcon"></mat-icon>
+        <input matInput formControlName="search" #searchInput>
+        <button mat-button type="button" *ngIf="filterForm.value.search" matSuffix mat-icon-button
+                (click)="removeSearchText()">
+          <mat-icon svgIcon="closeIcon"></mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+  </form>
+</section>
+
+<section fxLayout>
+  <div class="searchInputs" fxLayout="column">
+    <!--<div>-->
+    <!--<mat-form-field class="searchInput">-->
+    <!--<mat-icon matSuffix svgIcon="searchIcon"></mat-icon>-->
+    <!--<mat-label>판매번호, 고객명, 직원명 검색</mat-label>-->
+    <!--<input matInput [(ngModel)]="filter.searchValue" name="searchValue" (keyup)="searchValue$.next($event.target.value)">-->
+    <!--<button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue=''">-->
+    <!--<mat-icon svgIcon="closeIcon"></mat-icon>-->
+    <!--</button>-->
+    <!--</mat-form-field>-->
+    <!--</div>-->
+    <div>
+
+    </div>
+  </div>
+  <!--<div class="buttons" fxLayout fxLayoutAlign="end end" fxFlex>-->
+  <!--<button mat-button color="primary" [disabled]="isFilterEmpty()" (click)="clearFilter.next()">필터제거</button>-->
+  <!--</div>-->
+</section>

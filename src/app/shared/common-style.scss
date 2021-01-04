@@ -1,0 +1,117 @@
+@import "../../assets/styles/variables";
+
+.fixed-full-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.clickable {
+  cursor: pointer;
+  color: $indigo-600;
+}
+
+.gridViewContainer {
+  flex: 1;
+  padding: 12px 24px;
+}
+
+.floatingAddButton {
+  position: absolute;
+  top: 58px;
+  right: 25px;
+}
+
+.add-dialog {
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Common style for Material table
+.mat-column-actions {
+  text-align: right;
+  mat-icon {
+    color: $icon-color-light;
+    margin-left: 2px;
+  }
+  mat-slide-toggle {
+    margin-left: 6px;
+  }
+  .listIcon:hover,
+  .editIcon:hover {
+    color: #81c784;
+  }
+  .deleteIcon:hover {
+    color: #e57373;
+  }
+}
+
+// .element-row {
+//   position: relative;
+// }
+
+// .element-row:not(.expanded) {
+//   cursor: pointer;
+// }
+
+// .element-row:not(.expanded):hover {
+//   background: #f5f5f5;
+// }
+
+// .element-row.expanded {
+//   border-bottom-color: transparent;
+// }
+
+//
+.table-view-header {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+
+  > div:first-child {
+    font-size: 18px;
+    display: flex;
+    align-items: baseline;
+
+    > span {
+      margin-left: 8px;
+      font-size: 14px;
+      color: $text-color-secondary;
+    }
+  }
+
+
+}
+
+.table-action-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 12px 12px 24px;
+}
+
+// Filter stlye in table
+.table-filter-container {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px 0 24px;
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    mat-form-field {
+      margin-right: 14px;
+    }
+  }
+
+  .search {
+    width: 300px;
+  }
+}
+
+.filter-actions {
+  padding-bottom: 1.34375em;
+}

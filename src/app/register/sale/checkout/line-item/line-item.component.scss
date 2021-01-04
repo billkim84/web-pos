@@ -1,0 +1,48 @@
+@import '../../../../shared/common-style';
+:host {
+  position: relative;
+}
+
+.line-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+
+.name {
+  flex: 1;
+  padding: 12px 0;
+}
+
+.quantity {
+  min-width: 45px;
+  max-width: 45px;
+  text-align: center;
+}
+
+.negativeQuantity {
+  @extend .quantity;
+  color: $red-500;
+}
+
+.price {
+  margin-right: 6px;
+  text-align: right;
+}
+
+.price-original {
+  color: $text-color-secondary;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+
+.addon {
+  color: $text-color-secondary;
+  font-size: 10px;
+}
+
+.remove-btn {
+  color: $text-color-secondary;
+}

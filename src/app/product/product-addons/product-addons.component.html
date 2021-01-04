@@ -1,0 +1,33 @@
+<table mat-table [dataSource]="dataSource" class="variant-option-table" [formGroup]="addonsControl">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>에드온명</th>
+    <td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+      <input type="text" formControlName="name" placeholder="에드온명" *ngIf="!readonly">
+      <div *ngIf="readonly">{{element.name || "-"}}</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>추가금액</th>
+    <td mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+      <input currencyMask [options]="currencyMaskOptions()" formControlName="price" placeholder="추가금액"
+             *ngIf="!readonly">
+      <div *ngIf="readonly">{{element.price || '0' | appCurrency:'0':'true'}}</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-stroked-button type="button" color="primary" (click)="addAddon()" *ngIf="!readonly">에드온 추가</button>
+    </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <button type="button" mat-icon-button (click)="removeAddon(i)" *ngIf="!readonly">
+        <mat-icon svgIcon="deleteIcon"></mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

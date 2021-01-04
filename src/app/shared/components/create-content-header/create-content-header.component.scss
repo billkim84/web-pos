@@ -1,0 +1,29 @@
+@import '../../../shared/common-style';
+:host {
+  display: flex;
+  align-items: center;
+  background-color:$main-content-background-color;
+  padding: 24px 24px 0 24px;
+}
+
+.back-button {
+  padding: 0;
+  min-width: 36px;
+  // color: $text-color-white-primary;
+}
+
+.title {
+  font-size: 18px;
+  // color: $text-color-white-primary;
+  margin-left: 5px; // Nanum Square font vertical-align problem
+  //padding-top: 5px;
+}
+
+// .cancel {
+//   color: $text-color-secondary;
+// }
+
+// .submit {
+//   color: $primary-color;
+//   font-weight: bold;
+// }

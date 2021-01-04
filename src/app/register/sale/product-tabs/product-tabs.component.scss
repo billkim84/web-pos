@@ -1,0 +1,32 @@
+@import '../../../shared/common-style';
+
+.quick-products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.group-products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  border: $border;
+}
+
+.group-header {
+  position: relative;
+  display: flex;
+  color: white;
+  height: 48px;
+  align-items: center;
+  margin: 0 -1px;
+  justify-content: center;
+  mat-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+  }
+}

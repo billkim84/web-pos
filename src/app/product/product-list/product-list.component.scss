@@ -1,0 +1,25 @@
+@import "../../shared/common-style";
+:host {
+  @extend .gridViewContainer;
+}
+
+.mat-column-name {
+  position: relative;
+}
+
+.variant-toggle {
+  position: absolute;
+  top: 14px;
+  left: 0px;
+  width: 22px;
+  height: 22px;
+}
+
+.mat-column-count,
+.mat-column-options {
+  width: 65px;
+}
+
+.mat-column-actions {
+  width: 80px;
+}

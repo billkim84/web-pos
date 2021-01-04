@@ -1,0 +1,98 @@
+@import '../shared/common-style';
+:host {
+  @extend .gridViewContainer;
+}
+
+.mat-column-status {
+  flex: 0 0 100px;
+}
+
+.sales-detail {
+  display: flex;
+  flex: 1;
+  padding-bottom: 12px;
+  >div {
+    padding-right: 16px;
+  }
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.action {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  mat-icon {
+    color: $text-color-disabled;
+    cursor: pointer;
+    &:hover {
+      color: $text-color-secondary;
+    }
+  }
+}
+
+.lineItem {
+  font-size: 14px;
+}
+
+.lineQuantity {
+  width: 40px;
+  font-weight: 500;
+}
+
+.multiplier {
+  margin-right: 8px;
+}
+
+.linePrice {
+  display: flex;
+  justify-content: flex-end;
+  width: 90px;
+}
+
+.price-original {
+  color: $text-color-secondary;
+  text-decoration: line-through;
+}
+
+.lineTotal {
+  width: 100px;
+  text-align: right;
+  font-weight: 500;
+}
+
+.divider {
+  margin: 12px 0;
+  border-bottom: $border;
+}
+
+.actions {
+  max-width: 140px;
+  min-width: 140px;
+}
+
+.detailBottom {
+  padding: 8px 16px;
+}
+
+// Totals
+.totals {
+  width: 310px;
+}
+
+.totalLine {
+  display: flex;
+  padding: 2px 0;
+  >div:first-child {
+    flex: 1;
+  }
+  >div:last-child {
+    width: 110px;
+    text-align: right;
+  }
+}

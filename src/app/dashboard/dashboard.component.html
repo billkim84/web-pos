@@ -1,0 +1,322 @@
+<!-- <section *ngIf="summary">
+  <div class="header">
+    <div class="headerLabel">대시보드<span class="date">{{formatDate(summary.dates.startDate, 'PPPP')}}</span>
+    </div>
+    <mat-button-toggle-group #group="matButtonToggleGroup" [value]="period" (change)="periodChange($event.value)">
+      <mat-button-toggle value="days">오늘</mat-button-toggle>
+      <mat-button-toggle value="week">이번주</mat-button-toggle>
+      <mat-button-toggle value="month">이번달</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+</section> -->
+
+<app-period-select [filterPeriod]="filterPeriod" [exclude]="[0, 12]" (periodChange)="periodChange($event)">
+</app-period-select>
+
+<!-- <pre>{{dashboardData | json}}</pre> -->
+<!--<section class="overview">-->
+<!--<canvas #chart width="500" height="300"></canvas>-->
+<!--<div class="performance" *ngIf="summary">-->
+<!--<div class="period">{{performanceLabel[0]}}</div>-->
+<!--<div class="total">{{summary.current.salesAmount | appCurrency}}</div>-->
+<!--<div class="compare" *ngIf="salesDiff.totalSalesAmountDiff !== 0">{{performanceLabel[1]}} 보다-->
+<!--<span [ngClass]="salesDiff.totalSalesAmountDiff > 0 ? 'increase' : 'decrease'">{{salesDiff.totalSalesAmountDiff | appCurrency}} {{salesDiff.totalSalesAmountDiff > 0 ? '증가' : '감소'}}</span>-->
+<!--하였습니다.-->
+<!--</div>-->
+<!--<div class="compare" *ngIf="salesDiff.totalSalesAmountDiff === 0">{{performanceLabel[1]}} 매출과 같습니다.-->
+<!--</div>-->
+<!--<div class="averageLabel">평균 매출액</div>-->
+<!--<div class="average">{{summary.current.avgPerSaleAmount | appCurrency}}</div>-->
+<!--<div class="compare" *ngIf="salesDiff.averageSaleAmountDiff !== 0">{{performanceLabel[1]}} 보다-->
+<!--<span [ngClass]="salesDiff.averageSaleAmountDiff > 0 ? 'increase' : 'decrease'">{{salesDiff.averageSaleAmountDiff | appCurrency}} {{salesDiff.averageSaleAmountDiff > 0 ? '증가' : '감소'}}</span>-->
+<!--하였습니다.-->
+<!--</div>-->
+<!--<div class="compare" *ngIf="salesDiff.averageSaleAmountDiff === 0">{{performanceLabel[1]}} 매출과 같습니다.-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+
+
+
+<div class="container-fluid" *ngIf="dashboardData">
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>총매출</mat-card-title>
+        <mat-card-content>
+              <app-sales-widget [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData"
+                            [chartType]="0"></app-sales-widget>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>평균매출</mat-card-title>
+        <app-sales-widget [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData"
+                          [chartType]="1"></app-sales-widget>
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>매출건</mat-card-title>
+        <app-sales-widget [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData"
+                          [chartType]="2"></app-sales-widget>
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>재방문 고객비</mat-card-title>
+        <app-customer-count [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData">
+        </app-customer-count>
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>결제수단별 매출</mat-card-title>
+        <mat-card-content>
+          <app-payment-types [paymentData]="dashboardData.payments"></app-payment-types>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>상품 매출 순위</mat-card-title>
+        <!-- <app-top-sale-products [topSaleProducts]="topSaleProducts" mode="byAmount"></app-top-sale-products> -->
+      </mat-card>
+    </div>
+
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>최근 판매목록</mat-card-title>
+        <app-recent-sales [sales]="recentSales"></app-recent-sales>
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>상품 판매량 순위</mat-card-title>
+        <app-top-sale-products [productData]="dashboardData.products" mode="byCount"></app-top-sale-products>
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>상품 매출 순위</mat-card-title>
+        <!-- <app-top-sale-products [topSaleProducts]="topSaleProducts" mode="byAmount"></app-top-sale-products> -->
+      </mat-card>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>최근 판매목록</mat-card-title>
+        <app-recent-sales [sales]="recentSales"></app-recent-sales>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>상품 판매량 순위</mat-card-title>
+        <!-- <app-top-sale-products [topSaleProducts]="topSaleProducts" mode="byCount"></app-top-sale-products> -->
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>상품 매출 순위</mat-card-title>
+        <!-- <app-top-sale-products [topSaleProducts]="topSaleProducts" mode="byAmount"></app-top-sale-products> -->
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <mat-card>
+        <mat-card-title>고객/비고객 매출</mat-card-title>
+        <!-- <app-sales-by-customer [salesInCurrentPeriod]="summary.salesInCurrentPeriod"
+                               [salesInPreviousPeriod]="summary.salesInPreviousPeriod"></app-sales-by-customer> -->
+      </mat-card>
+    </div>
+
+    <div class="col-md-3 col-lg-2">
+      <mat-card>
+        <mat-card-title>새고객</mat-card-title>
+        <!-- <app-customer-count [period]="period" [summary]="summary"></app-customer-count> -->
+      </mat-card>
+    </div>
+    <div class="col-md-3 col-lg-2">
+      <mat-card>
+        <mat-card-title>기존고객 판매건</mat-card-title>
+        <!-- <app-customer-sale-count-widget [period]="period" [summary]="summary"></app-customer-sale-count-widget> -->
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!--<div class="others">-->
+<!--<section class="card">-->
+<!--<div class="cardLabel">매출순위</div>-->
+<!--<div class="cardContent rank">-->
+<!--<mat-tab-group>-->
+<!--<mat-tab label="매출순">-->
+<!--<mat-list>-->
+<!--<mat-list-item *ngFor="let item of performance.rank; index as i">-->
+<!--<span>{{i + 1}}. {{item.productName}}</span>-->
+<!--<span fxFlex></span>-->
+<!--<span>{{item.revenue | appCurrency}}</span>-->
+<!--</mat-list-item>-->
+<!--</mat-list>-->
+<!--</mat-tab>-->
+<!--<mat-tab label="판매량순">-->
+<!--<mat-list>-->
+<!--<mat-list-item *ngFor="let item of performance.rank">-->
+<!--<span>{{item.productName}}</span>-->
+<!--<span>{{item.quantity | number}}</span>-->
+<!--</mat-list-item>-->
+<!--</mat-list>-->
+<!--</mat-tab>-->
+<!--</mat-tab-group>-->
+<!--</div>-->
+<!--</section>-->
+
+<!--<section class="card" fxFlex *ngIf="summary">-->
+<!--<div class="cardLabel">결제수단별 매출</div>-->
+<!--<div class="cardContent payments">-->
+<!--<div class="paymentLine">-->
+<!--<div></div>-->
+<!--<div>현금</div>-->
+<!--<div>신용카드</div>-->
+<!--<div>포인트</div>-->
+<!--<div>할인</div>-->
+<!--</div>-->
+<!--<div class="paymentLine">-->
+<!--<div>{{legendLabel[0]}}</div>-->
+<!--<div class="paymentCurrent">-->
+<!--<div>-->
+<!--{{this.summary.current.cashPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentDiff">-->
+<!--{{this.summary.current.cashPaidAmount - this.summary.previous.cashPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="paymentCurrent">-->
+<!--<div>-->
+<!--{{this.summary.current.creditCardPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentDiff">-->
+<!--{{this.summary.current.creditCardPaidAmount - this.summary.previous.creditCardPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="paymentCurrent">-->
+<!--<div>-->
+<!--{{this.summary.current.pointsPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentDiff">-->
+<!--{{this.summary.current.pointsPaidAmount - this.summary.previous.pointsPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="paymentCurrent">-->
+<!--<div>-->
+<!--{{this.summary.current.discountAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentDiff">-->
+<!--{{this.summary.current.discountAmount - this.summary.previous.discountAmount | appCurrency}}-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="paymentLine">-->
+<!--<div>{{legendLabel[1]}}</div>-->
+<!--<div class="paymentCurrent">-->
+<!--{{this.summary.previous.cashPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentCurrent">-->
+<!--{{this.summary.previous.creditCardPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentCurrent">-->
+<!--{{this.summary.previous.pointsPaidAmount | appCurrency}}-->
+<!--</div>-->
+<!--<div class="paymentCurrent">-->
+<!--{{this.summary.previous.discountAmount | appCurrency}}-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+<!--</div>-->
+
+
+<!--<div>{{performance | json}}</div>-->
+
+
+<!--
+
+<div class="masonry" appMasonry>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <mat-card>
+        <mat-card-title>총매출</mat-card-title>
+        <app-sales-widget [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData"
+                          [chartType]="0"></app-sales-widget>
+      </mat-card>
+    </div>
+  </div>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <mat-card>
+        <mat-card-title>평균매출</mat-card-title>
+        <app-sales-widget [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData"
+                          [chartType]="1"></app-sales-widget>
+      </mat-card>
+    </div>
+  </div>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <mat-card>
+        <mat-card-title>매출건</mat-card-title>
+        <app-sales-widget [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData"
+                          [chartType]="2"></app-sales-widget>
+      </mat-card>
+    </div>
+  </div>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <mat-card>
+        <mat-card-title>재방문 고객비</mat-card-title>
+        <app-customer-count [period]="period" [filterPeriod]="filterPeriod" [dashboardData]="dashboardData">
+        </app-customer-count>
+      </mat-card>
+    </div>
+  </div>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <h3 class="masonry-title">Veritatis aut repellendus, quidem nesciunt consequatur nulla sed itaque</h3>
+      <p class="masonry-description">Expedita voluptate similique ad harum dolorem nam ipsa repellat quos, autem eius
+        magni minima, asperiores nobis repudiandae ut quibusdam atque! Delectus atque veniam labore suscipit ullam,
+        consequuntur dicta, tenetur est nulla, quod obcaecati similique?</p>
+    </div>
+  </div>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <h3 class="masonry-title">Culpa quo animi ut temporibus, et distinctio facere perspiciatis saepe sunt unde</h3>
+      <p class="masonry-description">Iusto magni quasi recusandae autem ipsum asperiores consequatur explicabo, vero nam
+        iste quas sequi reiciendis quod, quos!</p>
+    </div>
+  </div>
+  <div class="masonry-brick">
+    <div class="masonry-content">
+      <h3 class="masonry-title">Molestiae quod consectetur enim modi unde expedita dicta placeat?</h3>
+      <p class="masonry-description">Aliquam laudantium mollitia quo sint maxime omnis repellendus beatae. Consequuntur
+        molestias odio sapiente. Officia minima, nisi! Tempora vero, architecto ducimus animi nostrum nobis aliquid
+        eligendi illo, facilis temporibus.</p>
+    </div>
+  </div>
+  <div class="masonry-brick" >
+    <div class="masonry-content">
+      <h3 class="masonry-title">Sit amet, consectetur adipisicing elit. Incidunt, commodi!</h3>
+      <p class="masonry-description">Accusamus culpa maxime harum minus ipsa ea qui, blanditiis sequi debitis.
+        Temporibus quisquam consequatur dolor, aliquid odio nulla dolorum animi quasi et! Reiciendis ipsum repellendus
+        quaerat explicabo, laboriosam amet, temporibus at sed voluptatibus, minima quia.</p>
+    </div>
+  </div> -->

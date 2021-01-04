@@ -1,0 +1,14 @@
+@import '../../shared/common-style';
+
+.quick-products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+
+}
+
+mat-tab-group {
+  margin: 0 auto;
+  border: $border;
+}

@@ -1,0 +1,110 @@
+@import "../../../shared/common-style";
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 450px;
+  // position: relative;
+  // min-height: 700px;
+  // height: 1000px;
+}
+
+.actions {
+  padding: 12px 24px;
+  text-align: right;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 24px 24px 0;
+}
+
+mat-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  border-bottom: $border;
+}
+
+.add-customer,
+.customer {
+  border-bottom: $border;
+  padding: 8px;
+  min-height: 54px;
+  max-height: 54px;
+  mat-button {
+    margin-right: 8px;
+  }
+
+  mat-icon {
+    color: $text-color-secondary;
+  }
+}
+
+.customer-icon {
+  margin-right: 8px;
+}
+
+.customer {
+  // make it the same style add-customer
+  // line-height: 36px;
+  cursor: pointer;
+  padding: 12px 12px 12px 24px;
+  .phone {
+    font-size: 12px;
+    color: $text-color-secondary;
+    margin-top: 2px;
+    padding-left: 2px;
+  }
+}
+
+.note {
+  margin: 0 24px;
+  margin-bottom: -1em;
+}
+
+mat-card-actions {
+  margin: 4px 24px 12px 24px !important;
+  button {
+    width: 100%;
+    color: white;
+    background-color: $green-500;
+    font-size: 20px;
+    line-height: 48px;
+    font-weight: bold;
+    div {
+      padding: 0 12px;
+    }
+  }
+}
+
+.lineItems-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.lineItems {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.refundButton {
+  background-color: $red-500 !important;
+}

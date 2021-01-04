@@ -1,0 +1,68 @@
+<section *ngIf="sale">
+  <div class="header">
+    <div>{{currentStore.name}} {{currentStore.phoneNumber}}</div>
+    <div>{{currentStore.address}}</div>
+    <div>{{currentStore.representative}} {{currentStore.businessNumber}}</div>
+  </div>
+  <div class="line-items-header">
+    <div class="name">상품명</div>
+    <div class="price">단가</div>
+    <div class="quantity">수량</div>
+    <div class="total">금액</div>
+  </div>
+  <div>
+    <div class="line-item" *ngFor="let lineItem of sale.lineItems; index as i; trackBy: trackByFnction">
+      <div class="name">{{lineItem.name}}</div>
+      <div class="price">{{lineItem.finalTotal | number:0}}</div>
+      <div class="quantity">{{lineItem.quantity | number:0}}</div>
+      <div class="total">{{lineItem.finalTotal | number:0}}</div>
+    </div>
+  </div>
+  <div class="receipt-total">
+    <!-- <div>
+      <div class="label">과세물품</div>
+      <div class="value">{{getTotalTaxablePrice(sale) | appCurrency}}</div>
+    </div> -->
+    <div>
+      <div class="label">부가세</div>
+      <div class="value">{{sale.totalTax | appCurrency}}</div>
+    </div>
+    <!-- <div *ngIf="getTotalTaxFreePrice(sale) > 0">
+      <div class="label">면세물품</div>
+      <div class="value">{{getTotalTaxFreePrice(sale) | appCurrency}}</div>
+    </div> -->
+    <div>
+      <div class="label">구매금액</div>
+      <div class="value">{{sale.totalPrice | appCurrency}}</div>
+    </div>
+    <div>
+      <div class="label">판매금액 절사</div>
+      <div class="value">{{-sale.priceAdjustment | appCurrency}}</div>
+    </div>
+  </div>
+
+  <div class="payments">
+    <div class="payment-line" *ngFor="let payment of sale.payments; trackBy: trackByFnction">
+      <div><span>{{payment.amount > 0 ? '결제' : '환불'}}({{getTypeNameKo(payment.paymentType)}})</span></div>
+      <div>{{payment.amount | number}}</div>
+      <button mat-icon-button (click)="removePayment(payment.id)">
+        <mat-icon svgIcon="deleteIcon"></mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="change" *ngIf="sale.change > 0">
+    <div><span>거스름돈</span></div>
+    <div>{{sale.change | number}}</div>
+  </div>
+
+  <div class="balance">
+    <div>잔액</div>
+    <div>{{sale.balance| number}}</div>
+  </div>
+
+  <div class="receipt__barcode">
+  </div>
+  <div class="receipt__footer">
+  </div>
+</section>

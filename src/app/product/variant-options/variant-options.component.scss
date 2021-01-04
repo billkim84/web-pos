@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  margin-bottom: 25px;
+}
+
+input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  font-size: 14px;
+}
+
+input.mat-chip-input {
+  max-width: 80px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-actions {
+  text-align: right;
+}
+
+.variant-option-table {
+  margin-bottom: 24px;
+}

@@ -1,0 +1,51 @@
+@import '../../shared/common-style';
+
+.upload {
+  margin-bottom: 20px;
+
+  > div {
+    padding-left: 16px;
+    font-size: 14px;
+  }
+}
+
+
+.error, .success {
+  width: 100%;
+  > mat-icon {
+    flex-shrink: 0;
+    padding: 4px;
+    box-sizing: content-box;
+    color: $red-500;
+  }
+
+  > div {
+    padding-left: 16px;
+  }
+}
+
+mat-divider {
+  margin: 6px 0;
+}
+
+.message {
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+
+.cells {
+  font-size: 13px;
+  line-height: 18px;
+  overflow-wrap: break-word;
+  color: $text-color-secondary;
+}
+
+.total {
+  display: flex;
+  font-size: 13px;
+  line-height: 27px;
+
+  >div:first-child {
+    width: 100px;
+  }
+}

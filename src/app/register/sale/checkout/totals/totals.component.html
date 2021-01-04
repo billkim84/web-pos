@@ -1,0 +1,67 @@
+<ul *ngIf="sale">
+
+  <li>
+    <div class="total-line">
+      <div>전체금액</div>
+      <div>{{origianlTotal | appCurrency}}</div>
+    </div>
+    <div class="total-line">
+      <div (click)="openDiscountDialog()">할인금액</div>
+      <div>{{sale.totalDiscount | appCurrency}}</div>
+    </div>
+  </li>
+
+  <li>
+    <div class="total-line">
+      <div>과세금액</div>
+      <div>{{sale.subTotal - sale.totalTax | appCurrency}}</div>
+    </div>
+    <div class="total-line">
+      <div>부가세액</div>
+      <div>{{sale.totalTax | appCurrency}}</div>
+    </div>
+  </li>
+
+  <li>
+    <div class="total-line">
+      <div>전체금액</div>
+      <div>{{sale.subTotal | appCurrency}}</div>
+    </div>
+    <div class="total-line" *ngIf="sale.priceAdjustment > 0">
+      <div>판매금액 절사</div>
+      <div class="priceAdjust">{{-sale.priceAdjustment | appCurrency}}</div>
+    </div>
+  </li>
+
+</ul>
+
+<ul *ngIf="!sale">
+  <li>
+    <div class="total-line">
+      <div>전체금액</div>
+      <div>0</div>
+    </div>
+    <div class="total-line">
+      <div>할인금액</div>
+      <div>0</div>
+    </div>
+  </li>
+
+  <li>
+    <div class="total-line">
+      <div>과세금액</div>
+      <div>0</div>
+    </div>
+    <div class="total-line">
+      <div>부가세액</div>
+      <div>0</div>
+    </div>
+  </li>
+
+  <li>
+    <div class="total-line">
+      <div>전체금액</div>
+      <div>0</div>
+    </div>
+  </li>
+</ul>

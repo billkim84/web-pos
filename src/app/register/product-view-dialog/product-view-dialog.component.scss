@@ -1,0 +1,117 @@
+@import "../../shared/common-style.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: -24px;
+}
+
+.header {
+  padding: 24px 24px 12px 24px;
+  font-size: 18px;
+}
+
+.discount-header {
+  padding: 16px 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: $border;
+
+  h1 {
+    margin: 0;
+  }
+
+  button {
+    position: absolute;
+    left: 24px;
+  }
+}
+
+.price {
+  font-size: 18px;
+  text-align: right;
+}
+
+.quantityInput {
+  display: flex;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  input {
+    align-self: stretch;
+    width: 100px;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    font-size: 18px;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  button {
+    border-radius: 0;
+    height: 50px;
+    flex: 1;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 40px;
+
+    &:first-child {
+      border-right: 1px solid $border-color;
+    }
+    &:last-child {
+      border-left: 1px solid $border-color;
+    }
+  }
+}
+
+.discount-button {
+  height: 52px;
+  width: 100%;
+}
+
+.discount-label {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+// .addons {
+//   display: flex;
+//   flex-direction: column;
+//   >mat-checkbox {
+//     padding-left: 2px;
+//     margin-bottom: 4px;
+//   }
+// }
+
+// .discount {
+//   width: 225px;
+//   // display: flex;
+//   // align-items: center;
+//   // margin-bottom: 12px;
+
+//   // .label {
+//   //   margin-right: 12px;
+//   // }
+// }
+
+// // .discount {
+// //   button {
+// //     width: 198px;
+// //   }
+
+// // }
+
+.discount-inputs {
+  padding: 24px;
+}

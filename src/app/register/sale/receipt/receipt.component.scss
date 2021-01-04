@@ -1,0 +1,116 @@
+@import "../../../shared/common-style";
+
+$receipt-width: 380px;
+$padding-bottom: 6px;
+$margin-bottom: 6px;
+$price-width: 80px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-width: $receipt-width;
+  max-width: $receipt-width;
+  background-color: #f9f9f9;
+
+  font-family: monospace;
+  font-size: 12px;
+
+  > section {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px;
+  }
+}
+
+pre {
+  word-wrap: break-word;
+}
+
+.header {
+  border-bottom: $border;
+}
+
+.line-items-header {
+  display: flex;
+  padding: 5px 0;
+  margin-bottom: $margin-bottom;
+  border-bottom: $border;
+}
+
+.line-item {
+  display: flex;
+  padding-bottom: $padding-bottom;
+  &:last-child {
+    margin-bottom: $margin-bottom;
+    border-bottom: $border;
+  }
+}
+
+.name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price,
+.total {
+  text-align: right;
+  width: $price-width;
+}
+
+.quantity {
+  text-align: right;
+  width: 32px;
+}
+
+.receipt-total {
+  > div {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: $padding-bottom;
+
+    &:last-child {
+      margin-bottom: $margin-bottom;
+      border-bottom: $border;
+    }
+  }
+
+  .value {
+    text-align: right;
+    width: $price-width;
+  }
+}
+
+.payment-line {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  &:last-child {
+    margin-bottom: $margin-bottom;
+    border-bottom: $border;
+  }
+
+  button {
+    position: absolute;
+    right: -36px;
+    top: 0;
+    color: $icon-color-default;
+  }
+}
+
+.change {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $padding-bottom;
+  margin-bottom: $margin-bottom;
+  border-bottom: $border;
+}
+
+.balance {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+}

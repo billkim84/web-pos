@@ -1,0 +1,30 @@
+<mat-toolbar class="mat-elevation-z0">
+  <button mat-icon-button class="menu-toggle" (click)="toggleMenuMode()">
+    <mat-icon svgIcon="menu"></mat-icon>
+  </button>
+  <div class="store-name" *ngIf="store" routerLink="/">{{store.name}}</div>
+  <span fxFlex></span>
+  <!--<mat-icon matBadge="3" matBadgeColor="warn"  svgIcon="notification"></mat-icon>-->
+  <button class="user" *ngIf="user" mat-button [matMenuTriggerFor]="menu">
+    <mat-icon svgIcon="account"></mat-icon>
+    <span>{{user.name}}</span>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon svgIcon="setting"></mat-icon>
+      <span>설정</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon svgIcon="help"></mat-icon>
+      <span>도움</span>
+    </button>
+    <button mat-menu-item (click)="requestFullScreen()">
+      <mat-icon svgIcon="fullscreen" ></mat-icon>
+      <span>전체화면</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon svgIcon="exit"></mat-icon>
+      <span>로그아웃</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
